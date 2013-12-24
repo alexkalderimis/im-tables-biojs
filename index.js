@@ -98,7 +98,7 @@
       throw new Error(options.target + " refers to more than one element");
     }
 
-    this.widget = w =$elem.imWidget(this.options);
+    this.widget = w = $elem.imWidget(this.options);
     that = this;
     w.states.on("add remove reset", function () {
       that.fireEvent("onQueryChanged", w.states.currentQuery);
@@ -284,6 +284,15 @@
      });
      return promise;
     }
+
+    /**
+     * Get the current query. Changes to this query will be reflected in the table.
+     *
+     * @return {intermine.Query} The current query.
+     */
+   ,getQuery: function () {
+     return this.widget.states.currentQuery;
+   }
 
     /**
      * Receive notification of changes to the underlying query.

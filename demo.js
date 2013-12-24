@@ -1,11 +1,20 @@
 (function main (B) {
+  var disease = {
+    from: "Disease",
+    select: [
+      "genes.homologues.homologue.pathways.genes.*",
+      "genes.homologues.homologue.pathways.genes.goAnnotation.ontologyTerm.name"
+  ],
+    where: {
+      "name": "Alzheimer*",
+      "genes.organism.name": "Homo sapiens",
+      "genes.homologues.homologue.organism.name": "Drosophila melanogaster"
+    }
+  };
   var table = new B.InterMineTable({
     target: "table-container",
     url: "http://www.flymine.org/query",
-    query: {
-      from: 'Organism',
-      select: ['commonName', 'name', 'taxonId']
-    }
+    query: disease
   });
   window.demoTable = table;
   table.onQueryChanged(function (query) {
