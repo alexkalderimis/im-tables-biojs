@@ -1,5 +1,5 @@
 (function main (B) {
-  var table = new B.InterMineTable({
+  var table = new B.InterMine.Table({
     target: "table-container",
     url: "http://www.flymine.org/query",
     query: {
